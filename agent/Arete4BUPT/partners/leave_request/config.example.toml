@@ -1,0 +1,29 @@
+[agent]
+name = "学生请假申请助手"
+code = "leave_request_agent"
+role = "partner"
+aic = "1.2.156.3088.0001.00001.HBQ3SF.F7JHGG.1.07HK"
+host = "0.0.0.0"
+port = 59222
+version = "1.0.0"
+local_demo_mode = false
+
+[acps]
+atr_server = "http://117.74.66.90:8002"
+adp_server = "http://117.74.66.90:8005"
+ca_server = "http://117.74.66.90:8003"
+ca_challenge_base_url = "http://0.0.0.0:8004/acps-atr-v2"
+footprint_url = "http://117.74.66.90:8006/notify"
+
+[security]
+cert_file = "./certs/agent.crt"
+key_file = "./certs/agent.key"
+ca_file = "./certs/ca.crt"
+enable_mtls = false
+
+[llm]
+enabled = true
+base_url = "https://qwen-tenant-80632907-acps99-ingress-cn-xibei2.eks.ebcloud.com/v1"
+api_key = "EMPTY"
+model = "qwen3-8b"
+timeout = 30

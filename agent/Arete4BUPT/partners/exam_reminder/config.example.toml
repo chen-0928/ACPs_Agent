@@ -1,0 +1,32 @@
+[llm.fast]
+api_type = "openai"
+api_key = "YOUR_API_KEY"
+base_url = "https://api.your-llm.com/v1/"
+model = "your-fast-model"
+
+[llm.default]
+api_type = "openai"
+api_key = "YOUR_API_KEY"
+base_url = "https://api.your-llm.com/v1/"
+model = "your-default-model"
+
+[server]
+host = "0.0.0.0"
+port = 59224
+
+[server.mtls]
+tls_enabled = true
+verify_client = true
+cert_file = "certs/server.crt"
+key_file = "certs/server.key"
+ca_file = "certs/ca.crt"
+
+[concurrency]
+max_concurrent_tasks = 10
+
+[log]
+level = "INFO"
+
+[reminder]
+default_reminder_days = 3
+min_gap_minutes = 60         # 考试间隔少于60分钟视为“间隔紧张”

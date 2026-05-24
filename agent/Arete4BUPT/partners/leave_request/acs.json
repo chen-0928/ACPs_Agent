@@ -1,0 +1,90 @@
+{
+  "aic": "1.2.156.3088.0001.00001.HBQ3SF.F7JHGG.1.07HK",
+  "active": true,
+  "lastModifiedTime": "2026-05-22T13:30:26+08:00",
+  "protocolVersion": "02.00",
+  "name": "校园请假助手",
+  "description": "校园请假助手（Partner）。职责：为北京邮电大学学生处理课程请假事务，分析请假类型（病假/事假/公假/竞赛公假），生成所需材料清单，说明审批流程，草拟正式请假申请，对缺失信息进行追问。范围：仅限校内课程缺勤请假。明确拒绝：① 不能代替学校/辅导员审批；② 不能真实提交请假申请；③ 不能伪造证明材料；④ 校外非课程相关请假；⑤ 选课/缓考/考试提醒等其他业务（交对应助手处理）。",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "北京邮电大学",
+    "department": "人工智能学院",
+    "url": "https://www.bupt.edu.cn"
+  },
+  "securitySchemes": {
+    "mtls": {
+      "type": "mutualTLS",
+      "description": "智能体间 mTLS 双向认证",
+      "x-caChallengeBaseUrl": "https://myung-elytroid-patrica.ngrok-free.dev/acps-atr-v2"
+    }
+  },
+  "endPoints": [
+    {
+      "url": "https://localhost:59222/rpc",
+      "transport": "JSONRPC",
+      "security": [{ "mtls": [] }]
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "notification": false,
+    "messageQueue": []
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "leave_request.leave-type-detection",
+      "name": "请假类型识别",
+      "description": "根据学生描述自动识别请假类型（病假/事假/公假/竞赛公假），并判断是否需要额外证明材料。",
+      "version": "1.0.0",
+      "tags": ["请假", "类型识别", "病假", "事假", "公假"],
+      "examples": [
+        "我发烧了想请三天病假",
+        "我要参加大学生创新创业比赛，怎么申请公假",
+        "家里有事要请假两天"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "leave_request.material-checklist",
+      "name": "材料清单生成",
+      "description": "根据请假类型生成所需材料清单（如医院证明、家长知情书、辅导员签字单等）。",
+      "version": "1.0.0",
+      "tags": ["材料", "清单", "证明材料", "请假"],
+      "examples": [
+        "请病假需要准备什么材料",
+        "公假申请要哪些证明"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "leave_request.approval-flow",
+      "name": "审批流程指引",
+      "description": "说明不同类型请假的审批步骤和流程（辅导员→学院→任课教师等），包含注意事项和风险提醒。",
+      "version": "1.0.0",
+      "tags": ["审批", "流程", "辅导员", "学院"],
+      "examples": [
+        "请假流程是什么，先找辅导员还是任课老师",
+        "公假需要学院审批吗"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "leave_request.application-drafting",
+      "name": "请假申请草稿",
+      "description": "根据学生提供的信息生成正式的中文请假申请草稿，包含请假事由、时间、联系方式等必要要素。",
+      "version": "1.0.0",
+      "tags": ["草稿", "申请", "请假条", "模板"],
+      "examples": [
+        "帮我写一份病假请假条",
+        "生成一份公假申请"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

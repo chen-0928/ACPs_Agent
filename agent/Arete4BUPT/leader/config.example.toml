@@ -1,0 +1,41 @@
+[app]
+acs_json = "acs.json"
+
+[logging]
+level = "INFO"
+
+[logging.packages]
+"assistant.core" = "DEBUG"
+
+[uvicorn]
+host = "0.0.0.0"
+port = 59210
+reload = false
+
+[mtls]
+cert_file = "certs/your-cert.pem"
+key_file = "certs/your-cert.key"
+ca_file = "certs/trust-bundle.pem"
+
+[llm.fast]
+api_type = "openai"
+api_key = "YOUR_API_KEY"
+base_url = "https://api.your-llm.com/v1/"
+model = "your-fast-model"
+
+[llm.default]
+api_type = "openai"
+api_key = "YOUR_API_KEY"
+base_url = "https://api.your-llm.com/v1/"
+model = "your-default-model"
+
+[llm.pro]
+api_type = "openai"
+api_key = "YOUR_API_KEY"
+base_url = "https://api.your-llm.com/v1/"
+model = "your-pro-model"
+
+[discovery]
+server_base_url = "http://117.74.66.90:8005"
+timeout = 60
+limit = 5

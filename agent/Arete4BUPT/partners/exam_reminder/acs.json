@@ -1,0 +1,76 @@
+{
+  "aic": "1.2.156.3088.0001.00001.E3GP7C.E6A4I1.1.0HJ7",
+  "active": true,
+  "lastModifiedTime": "2026-05-22T13:30:26+08:00",
+  "protocolVersion": "02.00",
+  "name": "考试提醒助手",
+  "description": "考试提醒助手（Partner）。职责：为北京邮电大学学生提供考试时间查询、多门考试冲突检测、考前DDL提醒、考场信息推送、个人考试日历管理。范围：仅限校内课程考试。明确拒绝：① 非考试类日程（如上课提醒、作业DDL）；② 补考/重修安排；③ 选课/请假/缓考等其他业务（交对应助手处理）。混合请求时保留考试提醒可执行部分并说明拒绝项。",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "北京邮电大学",
+    "department": "人工智能学院",
+    "url": "https://www.bupt.edu.cn"
+  },
+  "securitySchemes": {
+    "mtls": {
+      "type": "mutualTLS",
+      "description": "智能体间 mTLS 双向认证",
+      "x-caChallengeBaseUrl": "https://myung-elytroid-patrica.ngrok-free.dev/acps-atr-v2"
+    }
+  },
+  "endPoints": [
+    {
+      "url": "https://localhost:59224/rpc",
+      "transport": "JSONRPC",
+      "security": [{ "mtls": [] }]
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "notification": false,
+    "messageQueue": []
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "exam_reminder.exam-schedule",
+      "name": "考试时间查询",
+      "description": "查询学生的考试时间安排，支持按学期/课程筛选。",
+      "version": "1.0.0",
+      "tags": ["考试查询", "时间安排", "考试日历"],
+      "examples": [
+        "这学期有哪些考试，分别在什么时候",
+        "算法考试是哪天，在哪个考场"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "exam_reminder.conflict-detection",
+      "name": "考试冲突检测",
+      "description": "检测学生多门考试是否在时间/地点上存在冲突。",
+      "version": "1.0.0",
+      "tags": ["冲突检测", "考试安排", "时间冲突"],
+      "examples": [
+        "帮我检查这学期期末考试有没有冲突",
+        "1月8号上午两门考试撞了怎么办"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "exam_reminder.ddl-reminder",
+      "name": "考前DDL提醒",
+      "description": "按考试日期提前提醒学生，支持设置提前天数。",
+      "version": "1.0.0",
+      "tags": ["提醒", "DDL", "考前", "通知"],
+      "examples": [
+        "提醒我下周一有算法考试",
+        "每次考试提前3天提醒我"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

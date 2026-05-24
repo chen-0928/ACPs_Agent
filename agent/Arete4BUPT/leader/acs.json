@@ -1,0 +1,47 @@
+{
+  "aic": "1.2.156.3088.0001.00001.R1JUQE.821HRL.1.0YVV",
+  "active": true,
+  "lastModifiedTime": "2026-05-22T13:21:29+08:00",
+  "protocolVersion": "02.00",
+  "name": "个人课程助手",
+  "description": "个人课程助手（Leader）。职责：作为学生与校园课程服务的统一入口，接收自然语言请求，理解意图后将任务分解，通过 ADP 发现服务匹配合适的 Partner 智能体（选课/请假/缓考/考试提醒），调度执行并整合结果返回学生。范围：覆盖校园课程全场景（选课、请假、缓考、考试提醒）。明确拒绝：① 校园活动/公开课推荐（非本组范围）；② 餐饮/外卖/快递等生活场景；③ 校外非课程相关请求。混合请求时拆分到各自 Partner 处理并汇总。",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "北京邮电大学",
+    "department": "人工智能学院",
+    "url": "https://www.bupt.edu.cn"
+  },
+  "securitySchemes": {
+    "mtls": {
+      "type": "mutualTLS",
+      "description": "智能体间 mTLS 双向认证",
+      "x-caChallengeBaseUrl": "https://myung-elytroid-patrica.ngrok-free.dev/acps-atr-v2"
+    }
+  },
+  "endPoints": [],
+  "webAppUrl": "http://localhost:59210",
+  "capabilities": {
+    "streaming": false,
+    "notification": false,
+    "messageQueue": []
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "leader.course-task-orchestration",
+      "name": "课程任务编排",
+      "description": "接收学生自然语言请求，进行意图分析，拆解为子任务，通过 ADP 发现服务匹配并调度合适的 Partner 智能体执行，整合结果返回。",
+      "version": "1.0.0",
+      "tags": ["任务编排", "意图分析", "Partner调度", "结果整合"],
+      "examples": [
+        "帮我选一门AI方向的选修课",
+        "我需要请3天病假该怎么操作",
+        "期末有两门考试冲突了怎么办",
+        "提醒我下周一有算法考试"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

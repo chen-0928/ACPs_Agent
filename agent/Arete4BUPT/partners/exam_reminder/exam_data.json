@@ -1,0 +1,53 @@
+{
+  "semester": "2025-2026春季",
+  "exams": [
+    {
+      "course_name": "算法设计与分析",
+      "exam_date": "2026-06-15",
+      "start_time": "14:00",
+      "end_time": "16:00",
+      "location": "教三楼301",
+      "seat": "A12"
+    },
+    {
+      "course_name": "数据库系统原理",
+      "exam_date": "2026-06-16",
+      "start_time": "09:00",
+      "end_time": "11:00",
+      "location": "主楼501",
+      "seat": "B07"
+    },
+    {
+      "course_name": "计算机网络",
+      "exam_date": "2026-06-17",
+      "start_time": "14:00",
+      "end_time": "16:00",
+      "location": "教一楼101",
+      "seat": "C15"
+    },
+    {
+      "course_name": "操作系统",
+      "exam_date": "2026-06-18",
+      "start_time": "09:00",
+      "end_time": "11:00",
+      "location": "主楼403",
+      "seat": "D22"
+    },
+    {
+      "course_name": "人工智能导论",
+      "exam_date": "2026-06-19",
+      "start_time": "14:00",
+      "end_time": "16:00",
+      "location": "教四楼201",
+      "seat": "E03"
+    },
+    {
+     "course_name": "软件工程",
+     "exam_date": "2026-05-19",
+     "start_time": "10:00",
+     "end_time": "12:00",
+     "location": "教二楼205",
+     "seat": "F08"
+    }
+  ]
+}

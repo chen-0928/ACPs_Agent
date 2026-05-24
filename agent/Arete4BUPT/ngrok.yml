@@ -1,0 +1,11 @@
+version: "2"
+tunnels:
+  course_selector:
+    proto: http
+    addr: 59221
+  leave_request:
+    proto: http
+    addr: 59222
+  exam_reminder:
+    proto: http
+    addr: 59224

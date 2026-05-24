@@ -1,0 +1,63 @@
+{
+  "aic": "1.2.156.3088.0001.00001.6CMY1O.ZTFJB0.1.0HE0",
+  "active": true,
+  "lastModifiedTime": "2026-05-22T13:30:26+08:00",
+  "protocolVersion": "02.00",
+  "name": "缓考助手",
+  "description": "缓考助手（Partner）。职责：为北京邮电大学学生处理缓考申请事务，判断缓考资格、列出所需材料、说明申请步骤和截止日期、适配常见缓考场景（因病/考试冲突/其他突发情况）。范围：仅限校内课程缓考。明确拒绝：① 补考/重修安排；② 免修申请；③ 选课/请假/考试提醒等其他业务（交对应助手处理）。混合请求时保留缓考可执行部分并说明拒绝项。",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "北京邮电大学",
+    "department": "人工智能学院",
+    "url": "https://www.bupt.edu.cn"
+  },
+  "securitySchemes": {
+    "mtls": {
+      "type": "mutualTLS",
+      "description": "智能体间 mTLS 双向认证",
+      "x-caChallengeBaseUrl": "https://myung-elytroid-patrica.ngrok-free.dev/acps-atr-v2"
+    }
+  },
+  "endPoints": [
+    {
+      "url": "http://10.29.99.196:59223/rpc",
+      "transport": "JSONRPC",
+      "security": [{ "mtls": [] }]
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "notification": false,
+    "messageQueue": []
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "exam_deferral.deferral-eligibility",
+      "name": "缓考资格判断",
+      "description": "根据学生情况和学校规定，判断是否满足缓考申请条件，说明缓考适用场景。",
+      "version": "1.0.0",
+      "tags": ["缓考", "资格", "条件判断"],
+      "examples": [
+        "因病无法参加期末考，可以申请缓考吗",
+        "两门考试同一天冲突可以缓考吗"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "exam_deferral.application-guide",
+      "name": "缓考申请指引",
+      "description": "说明缓考申请的具体步骤、所需材料、截止日期和提交方式。",
+      "version": "1.0.0",
+      "tags": ["缓考", "申请流程", "材料", "截止日期"],
+      "examples": [
+        "缓考申请需要哪些材料，怎么提交",
+        "缓考申请的截止日期是什么时候"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

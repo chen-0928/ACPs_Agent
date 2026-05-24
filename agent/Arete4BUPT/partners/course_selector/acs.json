@@ -1,0 +1,90 @@
+{
+  "aic": "1.2.156.3088.0001.00001.T1DSWF.UEFEWI.1.0Z6R",
+  "active": true,
+  "lastModifiedTime": "2026-05-22T13:30:26+08:00",
+  "protocolVersion": "02.00",
+  "name": "选课助手",
+  "description": "选课助手（Partner）。职责：为北京邮电大学学生提供课程查询、方向推荐、先修检查、容量查询、选课方向规划建议。范围：仅限校内课程相关请求。明确拒绝：① 校外课程/公开课推荐；② 非课程类选方向咨询（如考研选导）；③ 其他校园业务（请假/缓考等交给你对应助手）。混合请求时保留选课可执行部分并说明拒绝项。",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "北京邮电大学",
+    "department": "人工智能学院",
+    "url": "https://www.bupt.edu.cn"
+  },
+  "securitySchemes": {
+    "mtls": {
+      "type": "mutualTLS",
+      "description": "智能体间 mTLS 双向认证",
+      "x-caChallengeBaseUrl": "https://myung-elytroid-patrica.ngrok-free.dev/acps-atr-v2"
+    }
+  },
+  "endPoints": [
+    {
+      "url": "https://sharpener-exploring-resubmit.ngrok-free.dev/rpc",
+      "transport": "JSONRPC",
+      "security": [{ "mtls": [] }]
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "notification": false,
+    "messageQueue": []
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "course_selector.course-search",
+      "name": "课程查询",
+      "description": "支持按课程名/编号/学院/学分/时段查询校内课程，返回课程列表及基本信息。",
+      "version": "1.0.0",
+      "tags": ["课程查询", "课程检索", "课程搜索"],
+      "examples": [
+        "查一下这学期开了哪些AI方向的课程",
+        "计算机学院大三下学期有什么选修课",
+        "有没有关于深度学习的课程"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "course_selector.prerequisite-check",
+      "name": "先修检查",
+      "description": "检查某门课程是否需要先修课程，以及学生是否满足先修要求。",
+      "version": "1.0.0",
+      "tags": ["先修", "前置课程", "课程要求"],
+      "examples": [
+        "选计算机视觉需要先修什么课",
+        "我学过Python和线性代数，能选机器学习吗"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "course_selector.capacity-check",
+      "name": "容量查询",
+      "description": "查询某门课程当前选课人数和剩余名额。",
+      "version": "1.0.0",
+      "tags": ["容量", "名额", "选课人数"],
+      "examples": [
+        "计算机视觉这门课还有名额吗",
+        "数据结构课满了吗"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    },
+    {
+      "id": "course_selector.direction-planning",
+      "name": "选课方向规划",
+      "description": "根据学生已修课程和专业方向，推荐未来学期的选课路径和学习路线。不涉及校外课程。",
+      "version": "1.0.0",
+      "tags": ["选课规划", "方向推荐", "学习路径"],
+      "examples": [
+        "我是AI方向的大二学生，大三应该选哪些课",
+        "想往NLP方向发展，推荐一个选课路线"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain", "application/json"]
+    }
+  ]
+}

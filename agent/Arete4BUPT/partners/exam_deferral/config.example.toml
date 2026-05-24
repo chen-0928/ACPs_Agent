@@ -1,0 +1,57 @@
+﻿# Arete4BUPT - 缓考助手 Partner Agent 配置模板
+# 复制为 config.toml 后填入真实凭据使用
+
+[llm.fast]
+api_type = "openai"
+api_key = "YOUR_API_KEY"
+base_url = "https://api.your-llm.com/v1/"
+model = "your-fast-model"
+
+[llm.default]
+api_type = "openai"
+api_key = "YOUR_API_KEY"
+base_url = "https://api.your-llm.com/v1/"
+model = "your-default-model"
+
+# 备用：使用通义千问（DashScope OpenAI 兼容模式）
+# api_key 留空时会自动回退到本地知识库
+[llm]
+model = "qwen-plus"
+api_key = ""
+base_url = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+temperature = 0.7
+max_tokens = 2048
+
+[server]
+host = "0.0.0.0"
+port = 59223
+agent_id = "deferred-exam-partner"
+
+[server.mtls]
+tls_enabled = true
+verify_client = true
+cert_file = "certs/server.crt"
+key_file = "certs/server.key"
+ca_file = "certs/ca.crt"
+
+# 本地双向证书（aia_client.py 生成）
+[tls]
+cert_path = "certs/agent.crt"
+key_path = "certs/agent.key"
+ca_path = "certs/ca.crt"
+
+# ATR 注册服务（atr_client.py 用）
+[atr]
+register_url = "http://117.74.66.90:8002"
+aic = "1.2.156.3088.77820"
+
+# Footprint 大屏上报
+[footprint]
+enabled = true
+report_url = "http://117.74.66.90:8006/api/footprint"
+
+[concurrency]
+max_concurrent_tasks = 10
+
+[log]
+level = "INFO"
